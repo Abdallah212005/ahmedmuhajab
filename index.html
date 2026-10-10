@@ -439,12 +439,14 @@ html:not(.go) .hero-sub{opacity:0}
 }
 @media (max-width:520px){
   .work-list{grid-template-columns:1fr}
-  .frames{grid-template-columns:1fr}
-  .frame.big{aspect-ratio:4/3}
+  .frames{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .frame.big{grid-column:1/-1;aspect-ratio:16/10}
   .frame.tall{aspect-ratio:4/5}
-  .frame.r2{grid-template-columns:none}
+  .frame.r2{grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none}
+  .frame.r2 .sub{aspect-ratio:4/3;min-width:0}
   .hero-main{padding-bottom:300px}
   .hero-sub{font-size:15px}
+  .process-foot{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .cta{grid-template-columns:1fr}
   .get{justify-self:start}
   .social{justify-self:start}
@@ -669,22 +671,22 @@ html:not(.go) .hero-sub{opacity:0}
     <div class="frames">
       <figure class="frame big rv">
         <b><span>Project 01 — The Last Horizon</span></b>
-        <div class="ph" data-file="images/work-1.jpg"><img src="images/work-1.jpg" alt="Project 01"></div>
+        <div class="ph" data-file="images/work-1.jpg"><img src="images/work-1.jpg" data-fallback="images/hero.png" data-fallback-alt="Cinematic filmstrip montage" alt="Project 01"></div>
         <u><span>ARRI Alexa Mini &nbsp;/&nbsp; 2.39:1</span><span>Scene 04</span></u>
       </figure>
 
       <div class="frame r2 rv">
-        <div class="sub"><b><span>KODAK 400TX</span><span>27</span></b><div class="ph" data-file="images/work-2.jpg"><img src="images/work-2.jpg" alt="Portrait"></div></div>
-        <div class="sub" style="padding-top:10px"><div class="ph" data-file="images/work-3.jpg"><img src="images/work-3.jpg" alt="On set"></div></div>
+        <div class="sub"><b><span>KODAK 400TX</span><span>27</span></b><div class="ph" data-file="images/work-2.jpg"><img src="images/work-2.jpg" data-fallback="images/hero.jpg" data-fallback-alt="Ahmed operating a camera" alt="Portrait"></div></div>
+        <div class="sub" style="padding-top:10px"><div class="ph" data-file="images/work-3.jpg"><img src="images/work-3.jpg" data-fallback="images/film-roll.png" data-fallback-alt="Cinematic filmstrip montage" alt="On set"></div></div>
       </div>
 
       <figure class="frame tall rv">
-        <div class="ph" data-file="images/work-4.jpg"><img src="images/work-4.jpg" alt="Street"></div>
+        <div class="ph" data-file="images/work-4.jpg"><img src="images/work-4.jpg" data-fallback="images/hero.jpg" data-fallback-alt="Ahmed operating a camera" alt="Street"></div>
       </figure>
 
       <div class="frame r2 rv">
-        <div class="sub" style="padding-top:10px"><div class="ph has-color" data-file="images/work-5.jpg"><img src="images/work-5.jpg" alt="Desert drive"></div></div>
-        <div class="sub"><b><span></span><span></span></b><div class="ph" data-file="images/work-6.jpg"><img src="images/work-6.jpg" alt="Coast"></div></div>
+        <div class="sub" style="padding-top:10px"><div class="ph has-color" data-file="images/work-5.jpg"><img src="images/work-5.jpg" data-fallback="images/hero.png" data-fallback-alt="Cinematic filmstrip montage" alt="Desert drive"></div></div>
+        <div class="sub"><b><span></span><span></span></b><div class="ph" data-file="images/work-6.jpg"><img src="images/work-6.jpg" data-fallback="images/film-roll.png" data-fallback-alt="Cinematic filmstrip montage" alt="Coast"></div></div>
       </div>
     </div>
     <div class="hand reel-note">Real<br>places.<br>Real<br>people.</div>
@@ -731,7 +733,7 @@ html:not(.go) .hero-sub{opacity:0}
       <p class="body">I’m Ahmed — a filmmaker and photographer based between cities, landscapes and people. My work lives in the quiet moments, the raw textures, and the in-between. I’m drawn to real stories, honest faces, and the kind of beauty that doesn’t try too hard.</p>
     </div>
     <div class="polaroid rv">
-      <div class="ph has-color" data-file="images/about.jpg"><img src="images/about.jpg" alt="Ahmed"></div>
+      <div class="ph has-color" data-file="images/about.jpg"><img src="images/about.jpg" data-fallback="images/hero.jpg" data-fallback-alt="Ahmed operating a camera" alt="Ahmed"></div>
       <span class="hand">Same<br>mission.<br>New<br>stories.</span>
     </div>
     <blockquote class="quote">“It’s not just about what you see, but what you feel between the frames.”<cite>— AHMED</cite></blockquote>
@@ -740,7 +742,7 @@ html:not(.go) .hero-sub{opacity:0}
     <div class="seam" aria-hidden="true"><b>Splice · <span class="fr">0001</span></b></div>
 
   <div class="process" id="process" data-section="process">
-    <div class="process-bg ph" data-file="images/process-bg.jpg"><img src="images/process-bg.jpg" alt=""></div>
+    <div class="process-bg ph" data-file="images/process-bg.jpg"><img src="images/process-bg.jpg" data-fallback="images/hero.jpg" alt=""></div>
     <div class="label">Process</div>
     <div class="steps">
       <div class="step"><h4>01</h4><h5>RESEARCH</h5><p>Understand the story, people and place.</p></div>
@@ -750,9 +752,9 @@ html:not(.go) .hero-sub{opacity:0}
     </div>
     <div class="process-foot">
       <span class="hand">Better<br>images.<br>Bigger<br>stories.<i class="underline-hand"></i></span>
-      <div class="thumb ph" data-file="images/process-1.jpg"><img src="images/process-1.jpg" alt=""></div>
-      <div class="thumb ph" data-file="images/process-2.jpg"><img src="images/process-2.jpg" alt=""></div>
-      <div class="thumb ph" data-file="images/process-3.jpg"><img src="images/process-3.jpg" alt=""></div>
+      <div class="thumb ph" data-file="images/process-1.jpg"><img src="images/process-1.jpg" data-fallback="images/film-roll.png" alt=""></div>
+      <div class="thumb ph" data-file="images/process-2.jpg"><img src="images/process-2.jpg" data-fallback="images/hero.png" alt=""></div>
+      <div class="thumb ph" data-file="images/process-3.jpg"><img src="images/process-3.jpg" data-fallback="images/hero.jpg" alt=""></div>
     </div>
     <span class="arrow-r">▶</span>
   </div>
@@ -791,9 +793,21 @@ document.querySelectorAll('.ph img').forEach(img=>{
   const box=img.parentElement;
   const ok=()=>box.classList.add('loaded');
   img.addEventListener('load',ok);
-  img.addEventListener('error',()=>{img.style.display='none'});
+  img.addEventListener('error',()=>{
+    const fallback=img.dataset.fallback;
+    if(fallback&&!img.dataset.fallbackTried){
+      img.dataset.fallbackTried='true';
+      img.src=fallback;
+      img.alt=img.dataset.fallbackAlt||img.alt;
+      return;
+    }
+    console.error(`Unable to load portfolio image: ${img.src}`);
+    img.style.display='none';
+  });
   if(img.complete&&img.naturalWidth)ok();
 });
+const aperturePhoto=document.getElementById('lphoto');
+aperturePhoto.addEventListener('error',()=>aperturePhoto.setAttribute('href','images/hero.jpg'),{once:true});
 
 /* mobile menu */
 const burger=document.getElementById('burger'),nav=document.getElementById('nav');
