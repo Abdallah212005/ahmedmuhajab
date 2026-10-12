@@ -637,7 +637,24 @@ html:not(.go) .hero-sub{opacity:0}
 /* films: frame = thumbnail ratio (portrait videos stay portrait) */
 .films-grid{align-items:start}
 .vid{aspect-ratio:var(--ar,16/9)}
-.vid.feature.portrait{grid-column:1/-1;width:min(100%,420px);justify-self:center}
+/* portrait vid: constrain width so the cell doesn't stretch wide */
+.vid.portrait{width:min(100%,360px);justify-self:center}
+.vid.feature.portrait{grid-column:1/-1;width:min(100%,480px);justify-self:center}
+/* loading shimmer while thumbnail fetches */
+.vid:not(.vid-ready):not(.playing){background-image:linear-gradient(100deg,#111 25%,#1c1c1c 50%,#111 75%);background-size:200% 100%;animation:shimmer 1.6s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.vid.vid-ready,.vid.playing{animation:none;background-image:none}
+.vid.thumbnail-error{animation:none;background:linear-gradient(135deg,#1b1a19,#0f0e0e)}
+.vid.thumbnail-error img{display:none}
+.vid.thumbnail-error::before{content:"PREVIEW UNAVAILABLE";position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font:9px var(--f-mono);letter-spacing:.18em;pointer-events:none}
+.video-lightbox{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:24px;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
+.video-lightbox.open{opacity:1;visibility:visible}
+.video-lightbox-content{position:relative;width:min(92vw,1100px,calc((100vh - 96px)*var(--video-ratio,1.7778)));aspect-ratio:var(--video-ratio,16/9);max-height:calc(100vh - 96px);background:#000;box-shadow:0 24px 90px rgba(0,0,0,.7)}
+.video-lightbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-lightbox-close{position:absolute;right:0;top:-46px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:rgba(21,20,19,.8);color:var(--text);font:24px/1 var(--f-body);cursor:pointer;transition:background .2s,border-color .2s}
+.video-lightbox-close:hover{background:var(--accent);border-color:var(--accent)}
+html.video-open{overflow:hidden}
+@media (max-width:560px){.video-lightbox{padding:14px}.video-lightbox-content{width:min(94vw,calc((100vh - 84px)*var(--video-ratio,1.7778)));max-height:calc(100vh - 84px)}.video-lightbox-close{top:-42px}}
 
 /* about polaroids */
 .about-photos .ph{aspect-ratio:var(--ar,1/1.22)}
@@ -988,42 +1005,48 @@ html:not(.go) .hero-sub{opacity:0}
   </header>
   <div class="films-grid">
       <div class="vid feature" data-id="1wFZQ3WkqndVRTkDwdDgct-94yAbIXgrU">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1wFZQ3WkqndVRTkDwdDgct-94yAbIXgrU&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1wFZQ3WkqndVRTkDwdDgct-94yAbIXgrU&amp;sz=w800" alt="">
         <button type="button" class="play" aria-label="Play film 01"><span class="tri"></span></button>
         <b>REEL 01</b><u>FEATURE</u>
       </div>
       <div class="vid" data-id="15D13_bA6dOBkyjQYzPDakVJbBNMKppy9">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=15D13_bA6dOBkyjQYzPDakVJbBNMKppy9&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=15D13_bA6dOBkyjQYzPDakVJbBNMKppy9&amp;sz=w800" alt="">
         <button type="button" class="play" aria-label="Play film 02"><span class="tri"></span></button>
         <b>REEL 02</b><u>PLAY ▶</u>
       </div>
       <div class="vid" data-id="1Kb0Ks2LHqL6Q77rzrlNZIj-l858qI4Iv">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1Kb0Ks2LHqL6Q77rzrlNZIj-l858qI4Iv&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1Kb0Ks2LHqL6Q77rzrlNZIj-l858qI4Iv&amp;sz=w800" alt="">
         <button type="button" class="play" aria-label="Play film 03"><span class="tri"></span></button>
         <b>REEL 03</b><u>PLAY ▶</u>
       </div>
       <div class="vid" data-id="1DnfdQGJ2ToO5UPPuBFyrZys3Pc17aBb4">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1DnfdQGJ2ToO5UPPuBFyrZys3Pc17aBb4&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1DnfdQGJ2ToO5UPPuBFyrZys3Pc17aBb4&amp;sz=w800" alt="">
         <button type="button" class="play" aria-label="Play film 04"><span class="tri"></span></button>
         <b>REEL 04</b><u>PLAY ▶</u>
       </div>
       <div class="vid" data-id="1Qe-USq4kMQ2Toni9HZvMem4xA_vGtGrq">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1Qe-USq4kMQ2Toni9HZvMem4xA_vGtGrq&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1Qe-USq4kMQ2Toni9HZvMem4xA_vGtGrq&amp;sz=w800" alt="">
         <button type="button" class="play" aria-label="Play film 05"><span class="tri"></span></button>
         <b>REEL 05</b><u>PLAY ▶</u>
       </div>
       <div class="vid" data-id="1YUeY6T5m2F8oWx09XvzRfiH0l3n7BVjk">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1YUeY6T5m2F8oWx09XvzRfiH0l3n7BVjk&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1YUeY6T5m2F8oWx09XvzRfiH0l3n7BVjk&amp;sz=w800" alt="">
         <button type="button" class="play" aria-label="Play film 06"><span class="tri"></span></button>
         <b>REEL 06</b><u>PLAY ▶</u>
       </div>
       <div class="vid" data-id="1V2lte_7AZZ4knRdWHFCNArWIUYpao2MN">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1V2lte_7AZZ4knRdWHFCNArWIUYpao2MN&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1V2lte_7AZZ4knRdWHFCNArWIUYpao2MN&amp;sz=w800" alt="">
         <button type="button" class="play" aria-label="Play film 07"><span class="tri"></span></button>
         <b>REEL 07</b><u>PLAY ▶</u>
       </div>
   </div>
 </section>
+
+<div class="video-lightbox" aria-hidden="true">
+  <div class="video-lightbox-content" role="dialog" aria-modal="true" aria-label="Video player">
+    <button type="button" class="video-lightbox-close" aria-label="Close video">&times;</button>
+  </div>
+</div>
 
 <!-- =============== CTA / FOOTER =============== -->
 <footer class="cta" id="contact" data-section="contact">
@@ -1205,34 +1228,118 @@ secs.forEach(s=>so.observe(s));
 <script>
 /* videos: Drive iframe is created only on click, one at a time */
 (function(){
-  const vids=document.querySelectorAll('.vid');
-  const stop=v=>{const f=v.querySelector('iframe');if(f)f.remove();v.classList.remove('playing')};
-  vids.forEach(v=>v.querySelector('.play').addEventListener('click',()=>{
-    vids.forEach(o=>{if(o!==v)stop(o)});
-    const f=document.createElement('iframe');
-    f.src='https://drive.google.com/file/d/'+v.dataset.id+'/preview';
-    f.allow='autoplay; fullscreen; encrypted-media';
-    f.allowFullscreen=true;f.title='Film';
-    v.appendChild(f);v.classList.add('playing');
-  }));
+  var vids=document.querySelectorAll('.vid');
+  var lightbox=document.querySelector('.video-lightbox');
+  var player=lightbox.querySelector('.video-lightbox-content');
+  var closeButton=lightbox.querySelector('.video-lightbox-close');
+  var activeButton=null;
+  var previousOverflow='';
+
+  function close(){
+    var frame=player.querySelector('iframe');
+    if(frame)frame.remove();
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden','true');
+    document.documentElement.classList.remove('video-open');
+    document.body.style.overflow=previousOverflow;
+    if(activeButton)activeButton.focus();
+    activeButton=null;
+  }
+
+  vids.forEach(function(v){
+    var button=v.querySelector('.play');
+    button.addEventListener('click',function(){
+      activeButton=button;
+      previousOverflow=document.body.style.overflow;
+      var img=v.querySelector('img');
+      var ratio=img&&img.naturalWidth&&img.naturalHeight?img.naturalWidth/img.naturalHeight:16/9;
+      player.style.setProperty('--video-ratio',ratio);
+      var f=document.createElement('iframe');
+      f.src='https://drive.google.com/file/d/'+v.dataset.id+'/preview';
+      f.allow='autoplay; fullscreen; encrypted-media';
+      f.allowFullscreen=true;f.title='Film '+v.querySelector('b').textContent;
+      player.appendChild(f);
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden','false');
+      document.documentElement.classList.add('video-open');
+      closeButton.focus();
+    });
+  });
+  closeButton.addEventListener('click',close);
+  lightbox.addEventListener('click',function(event){
+    if(event.target===lightbox)close();
+  });
+  document.addEventListener('keydown',function(event){
+    if(event.key==='Escape'&&lightbox.classList.contains('open'))close();
+  });
 })();
 </script>
 <script>
-/* natural-ratio frames: each frame copies the real ratio of its photo / video thumbnail, so nothing is cropped */
+/* natural-ratio frames: each frame copies the real ratio of its photo / video thumbnail */
 (function(){
   var sel='.ph:not(.hero-img):not(.process-bg):not(.thumb),.photoshoot-card,.frame-still,.vid';
-  function apply(img){
+
+  function setRatio(t,w,h){
+    t.style.setProperty('--ar',w+' / '+h);
+    if(t.classList.contains('vid')){
+      var isPortrait=h>w;
+      t.classList.toggle('portrait',isPortrait);
+      t.classList.add('vid-ready');
+    }
+  }
+
+  function applyFromImg(img){
     var t=img.closest(sel);
-    if(!t||!img.naturalWidth||!img.naturalHeight)return;
-    t.style.setProperty('--ar',img.naturalWidth+' / '+img.naturalHeight);
-    if(t.classList.contains('vid'))t.classList.toggle('portrait',img.naturalHeight>img.naturalWidth);
+    if(!t)return;
+    if(img.naturalWidth&&img.naturalHeight){
+      setRatio(t,img.naturalWidth,img.naturalHeight);
+    }
   }
-  function watch(img){
-    if(img.complete)apply(img);
-    img.addEventListener('load',function(){apply(img)});
+
+  function tryLoad(img,attempt){
+    attempt=attempt||1;
+    function onLoad(){
+      applyFromImg(img);
+    }
+    function onError(){
+      if(attempt===1){
+        var src=img.src;
+        var newSrc=src.replace(/([?&]sz=)w\d+/,'$1w1200');
+        if(newSrc!==src){
+          attempt=2;
+          img.src=newSrc;
+          return;
+        }
+      }
+      var target=img.closest(sel);
+      if(target&&target.classList.contains('vid')){
+        target.classList.add('vid-ready','thumbnail-error');
+      }
+    }
+    img.addEventListener('load',onLoad);
+    img.addEventListener('error',onError);
+    if(img.complete){
+      if(img.naturalWidth&&img.naturalHeight)onLoad();
+      else onError();
+    }
   }
-  document.querySelectorAll(sel.split(',').map(function(s){return s+' img'}).join(',')).forEach(watch);
+
+  /* watch all images inside the selector targets */
+  var imgSel=sel.split(',').map(function(s){return s.trim()+' img'}).join(',');
+  document.querySelectorAll(imgSel).forEach(function(img){tryLoad(img,1)});
+
+  /* also handle vid elements that have data-portrait hint (manual override) */
+  document.querySelectorAll('.vid[data-portrait]').forEach(function(v){
+    if(!v.classList.contains('portrait')){
+      v.classList.add('portrait');
+      if(!v.style.getPropertyValue('--ar')){
+        v.style.setProperty('--ar','9 / 16');
+      }
+      v.classList.add('vid-ready');
+    }
+  });
 })();
 </script>
+
 </body>
 </html>
