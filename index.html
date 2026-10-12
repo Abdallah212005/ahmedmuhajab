@@ -621,6 +621,74 @@ html:not(.go) .hero-sub{opacity:0}
 .vid.playing .play,.vid.playing b,.vid.playing u,.vid.playing img{display:none}
 @media (max-width:980px){.films-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.films-grid{grid-template-columns:1fr}}
+
+/* =========================================================
+   NATURAL-RATIO FRAMES + MOBILE FIXES  (appended last so it wins)
+   Every frame takes the real aspect ratio of its photo / video
+   thumbnail (JS writes it into --ar), so nothing is ever cropped.
+========================================================= */
+/* photoshoots + frames: masonry columns, each card = its own photo ratio */
+.photoshoot-grid,.frame-gallery-grid{display:block;columns:2;column-gap:10px}
+.frame-gallery-grid{columns:4}
+.photoshoot-card,.photoshoot-card:nth-child(4n+2),.photoshoot-card:nth-child(4n+3),.photoshoot-card.landscape,.frame-still{aspect-ratio:var(--ar,4/5)}
+.photoshoot-card,.frame-still{display:block;margin:0 0 10px;break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid}
+.photoshoot-card img,.frame-still img{object-fit:cover}
+
+/* films: frame = thumbnail ratio (portrait videos stay portrait) */
+.films-grid{align-items:start}
+.vid{aspect-ratio:var(--ar,16/9)}
+.vid.feature.portrait{grid-column:1/-1;width:min(100%,420px);justify-self:center}
+
+/* about polaroids */
+.about-photos .ph{aspect-ratio:var(--ar,1/1.22)}
+.about-photos{align-items:start}
+@media (min-width:761px){.about-photos{height:400px}}
+
+@media (max-width:980px){
+  /* hero: text first, then the photo at its full natural ratio (no crop) */
+  .hero{display:flex;flex-direction:column;min-height:0;z-index:30}
+  .hero-main{padding:112px var(--pad) 26px}
+  .hero-img{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:100%;height:auto;order:2;flex:none}
+  .hero-img:not(.loaded){aspect-ratio:4/5}
+  .hero-img img{position:relative;inset:auto;width:100%;height:auto;object-fit:contain}
+  .hero-img .grad{background:linear-gradient(180deg,var(--bg) 0%,rgba(11,11,11,0) 16%)}
+  .film-strip{position:relative;left:auto;right:auto;bottom:auto;order:3;flex:none}
+  .hero-note{right:6%;top:auto;bottom:70px;font-size:clamp(18px,5vw,26px);color:#f1ede4;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+  .hero-note span{color:inherit}
+  .hero-note .underline-hand{width:110px}
+
+  /* work: collage becomes natural-ratio masonry */
+  .work{padding-bottom:10px}
+  .frames{display:block;columns:2;column-gap:10px;height:auto;min-height:0}
+  .frames>*{break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 10px}
+  .frame,.frame.big,.frame.tall{display:block;aspect-ratio:auto;min-height:0;padding:22px 10px 24px}
+  .frame.big{column-span:all}
+  .frame.tall{padding:10px 20px 10px 10px}
+  .frame.r2{display:block;padding:0;border:0;background:none}
+  .frame.r2 .sub{display:block;aspect-ratio:auto;margin-bottom:10px;padding:20px 10px 10px}
+  .frame.r2 .sub:last-child{margin-bottom:0}
+  .frame .ph,.frame.r2 .sub .ph{flex:none;width:100%;aspect-ratio:var(--ar,4/5)}
+
+  /* touch devices: no sticky hover zoom, no heavy transitions */
+  .ph img{transition:none}
+  .frame:hover .ph img,.photoshoot-card:hover img,.frame-still:hover img,.vid:hover img{transform:none}
+
+  /* the pinned "open the portfolio" trick relies on 100vh math that breaks with mobile toolbars: use normal flow */
+  .photoshoots{margin-top:0;clip-path:none;transition:none}
+  .leader-pin{height:210vh}
+  .pin{height:190vh}
+
+  .frame-gallery-grid{columns:2}
+  .cta-note{position:static;grid-column:1/-1}
+}
+@media (max-width:760px){
+  .about-photos{align-items:start}
+  .process-foot{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .nav{z-index:60}
+}
+@media (max-width:520px){
+  .frames{columns:1}
+}
 </style>
 </head>
 <body>
@@ -920,37 +988,37 @@ html:not(.go) .hero-sub{opacity:0}
   </header>
   <div class="films-grid">
       <div class="vid feature" data-id="1wFZQ3WkqndVRTkDwdDgct-94yAbIXgrU">
-        <img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1wFZQ3WkqndVRTkDwdDgct-94yAbIXgrU&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1wFZQ3WkqndVRTkDwdDgct-94yAbIXgrU&amp;sz=w800" alt="" onerror="this.style.display='none'">
         <button type="button" class="play" aria-label="Play film 01"><span class="tri"></span></button>
         <b>REEL 01</b><u>FEATURE</u>
       </div>
       <div class="vid" data-id="15D13_bA6dOBkyjQYzPDakVJbBNMKppy9">
-        <img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=15D13_bA6dOBkyjQYzPDakVJbBNMKppy9&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=15D13_bA6dOBkyjQYzPDakVJbBNMKppy9&amp;sz=w800" alt="" onerror="this.style.display='none'">
         <button type="button" class="play" aria-label="Play film 02"><span class="tri"></span></button>
         <b>REEL 02</b><u>PLAY ▶</u>
       </div>
       <div class="vid" data-id="1Kb0Ks2LHqL6Q77rzrlNZIj-l858qI4Iv">
-        <img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1Kb0Ks2LHqL6Q77rzrlNZIj-l858qI4Iv&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1Kb0Ks2LHqL6Q77rzrlNZIj-l858qI4Iv&amp;sz=w800" alt="" onerror="this.style.display='none'">
         <button type="button" class="play" aria-label="Play film 03"><span class="tri"></span></button>
         <b>REEL 03</b><u>PLAY ▶</u>
       </div>
       <div class="vid" data-id="1DnfdQGJ2ToO5UPPuBFyrZys3Pc17aBb4">
-        <img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1DnfdQGJ2ToO5UPPuBFyrZys3Pc17aBb4&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1DnfdQGJ2ToO5UPPuBFyrZys3Pc17aBb4&amp;sz=w800" alt="" onerror="this.style.display='none'">
         <button type="button" class="play" aria-label="Play film 04"><span class="tri"></span></button>
         <b>REEL 04</b><u>PLAY ▶</u>
       </div>
       <div class="vid" data-id="1Qe-USq4kMQ2Toni9HZvMem4xA_vGtGrq">
-        <img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1Qe-USq4kMQ2Toni9HZvMem4xA_vGtGrq&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1Qe-USq4kMQ2Toni9HZvMem4xA_vGtGrq&amp;sz=w800" alt="" onerror="this.style.display='none'">
         <button type="button" class="play" aria-label="Play film 05"><span class="tri"></span></button>
         <b>REEL 05</b><u>PLAY ▶</u>
       </div>
       <div class="vid" data-id="1YUeY6T5m2F8oWx09XvzRfiH0l3n7BVjk">
-        <img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1YUeY6T5m2F8oWx09XvzRfiH0l3n7BVjk&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1YUeY6T5m2F8oWx09XvzRfiH0l3n7BVjk&amp;sz=w800" alt="" onerror="this.style.display='none'">
         <button type="button" class="play" aria-label="Play film 06"><span class="tri"></span></button>
         <b>REEL 06</b><u>PLAY ▶</u>
       </div>
       <div class="vid" data-id="1V2lte_7AZZ4knRdWHFCNArWIUYpao2MN">
-        <img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1V2lte_7AZZ4knRdWHFCNArWIUYpao2MN&amp;sz=w800" alt="" onerror="this.style.display='none'">
+        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1V2lte_7AZZ4knRdWHFCNArWIUYpao2MN&amp;sz=w800" alt="" onerror="this.style.display='none'">
         <button type="button" class="play" aria-label="Play film 07"><span class="tri"></span></button>
         <b>REEL 07</b><u>PLAY ▶</u>
       </div>
@@ -971,6 +1039,12 @@ html:not(.go) .hero-sub{opacity:0}
 </footer>
 
 <script>
+/* very old browsers without IntersectionObserver: show everything instead of leaving images hidden */
+if(!('IntersectionObserver' in window)){
+  window.IntersectionObserver=function(cb){this.observe=function(el){cb([{isIntersecting:true,target:el}])};this.unobserve=function(){};this.disconnect=function(){}};
+}
+/* safety net: never leave a reveal-on-scroll block invisible */
+setTimeout(function(){document.querySelectorAll('.rv:not(.in)').forEach(function(e){e.classList.add('in')})},8000);
 /* image slots: show frame label until the image exists */
 document.querySelectorAll('.ph img').forEach(img=>{
   const box=img.parentElement;
@@ -995,9 +1069,9 @@ aperturePhoto.addEventListener('error',()=>aperturePhoto.setAttribute('href','im
 /* mobile menu */
 const burger=document.getElementById('burger'),nav=document.getElementById('nav');
 burger.addEventListener('click',()=>{
-  const o=nav.classList.toggle('open');burger.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);
+  const o=nav.classList.toggle('open');burger.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';
 });
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');burger.classList.remove('open')}));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');burger.classList.remove('open');document.body.style.overflow=''}));
 
 /* reveal */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
@@ -1141,6 +1215,23 @@ secs.forEach(s=>so.observe(s));
     f.allowFullscreen=true;f.title='Film';
     v.appendChild(f);v.classList.add('playing');
   }));
+})();
+</script>
+<script>
+/* natural-ratio frames: each frame copies the real ratio of its photo / video thumbnail, so nothing is cropped */
+(function(){
+  var sel='.ph:not(.hero-img):not(.process-bg):not(.thumb),.photoshoot-card,.frame-still,.vid';
+  function apply(img){
+    var t=img.closest(sel);
+    if(!t||!img.naturalWidth||!img.naturalHeight)return;
+    t.style.setProperty('--ar',img.naturalWidth+' / '+img.naturalHeight);
+    if(t.classList.contains('vid'))t.classList.toggle('portrait',img.naturalHeight>img.naturalWidth);
+  }
+  function watch(img){
+    if(img.complete)apply(img);
+    img.addEventListener('load',function(){apply(img)});
+  }
+  document.querySelectorAll(sel.split(',').map(function(s){return s+' img'}).join(',')).forEach(watch);
 })();
 </script>
 </body>
