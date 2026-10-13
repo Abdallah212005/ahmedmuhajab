@@ -648,7 +648,7 @@ html:not(.go) .hero-sub{opacity:0}
 .video-lightbox{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:24px;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
 .video-lightbox.open{opacity:1;visibility:visible}
 .video-lightbox-content{position:relative;width:min(92vw,1100px,calc((100vh - 96px)*var(--video-ratio,1.7778)));aspect-ratio:var(--video-ratio,16/9);max-height:calc(100vh - 96px);background:#000;box-shadow:0 24px 90px rgba(0,0,0,.7)}
-.video-lightbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-lightbox video{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:contain;background:#000}
 .video-lightbox-close{position:absolute;right:0;top:-46px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:rgba(21,20,19,.8);color:var(--text);font:24px/1 var(--f-body);cursor:pointer;transition:background .2s,border-color .2s}
 .video-lightbox-close:hover{background:var(--accent);border-color:var(--accent)}
 html.video-open{overflow:hidden}
@@ -1004,38 +1004,38 @@ html.video-open{overflow:hidden}
     <p class="mono">Reels 01—07 · tap to play</p>
   </header>
   <div class="films-grid">
-      <div class="vid feature" data-id="1wFZQ3WkqndVRTkDwdDgct-94yAbIXgrU">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1wFZQ3WkqndVRTkDwdDgct-94yAbIXgrU&amp;sz=w800" alt="">
+      <div class="vid feature" data-video="videos/reel-01.mp4">
+        <img loading="lazy" decoding="async" src="videos/reel-01-poster.jpg" alt="">
         <button type="button" class="play" aria-label="Play film 01"><span class="tri"></span></button>
         <b>REEL 01</b><u>FEATURE</u>
       </div>
-      <div class="vid" data-id="15D13_bA6dOBkyjQYzPDakVJbBNMKppy9">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=15D13_bA6dOBkyjQYzPDakVJbBNMKppy9&amp;sz=w800" alt="">
+      <div class="vid" data-video="videos/reel-02.mp4">
+        <img loading="lazy" decoding="async" src="videos/reel-02-poster.jpg" alt="">
         <button type="button" class="play" aria-label="Play film 02"><span class="tri"></span></button>
         <b>REEL 02</b><u>PLAY ▶</u>
       </div>
-      <div class="vid" data-id="1Kb0Ks2LHqL6Q77rzrlNZIj-l858qI4Iv">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1Kb0Ks2LHqL6Q77rzrlNZIj-l858qI4Iv&amp;sz=w800" alt="">
+      <div class="vid" data-video="videos/reel-03.mp4">
+        <img loading="lazy" decoding="async" src="videos/reel-03-poster.jpg" alt="">
         <button type="button" class="play" aria-label="Play film 03"><span class="tri"></span></button>
         <b>REEL 03</b><u>PLAY ▶</u>
       </div>
-      <div class="vid" data-id="1DnfdQGJ2ToO5UPPuBFyrZys3Pc17aBb4">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1DnfdQGJ2ToO5UPPuBFyrZys3Pc17aBb4&amp;sz=w800" alt="">
+      <div class="vid" data-video="videos/reel-04.mp4">
+        <img loading="lazy" decoding="async" src="videos/reel-04-poster.jpg" alt="">
         <button type="button" class="play" aria-label="Play film 04"><span class="tri"></span></button>
         <b>REEL 04</b><u>PLAY ▶</u>
       </div>
-      <div class="vid" data-id="1Qe-USq4kMQ2Toni9HZvMem4xA_vGtGrq">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1Qe-USq4kMQ2Toni9HZvMem4xA_vGtGrq&amp;sz=w800" alt="">
+      <div class="vid" data-video="videos/reel-05.mp4">
+        <img loading="lazy" decoding="async" src="videos/reel-05-poster.jpg" alt="">
         <button type="button" class="play" aria-label="Play film 05"><span class="tri"></span></button>
         <b>REEL 05</b><u>PLAY ▶</u>
       </div>
-      <div class="vid" data-id="1YUeY6T5m2F8oWx09XvzRfiH0l3n7BVjk">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1YUeY6T5m2F8oWx09XvzRfiH0l3n7BVjk&amp;sz=w800" alt="">
+      <div class="vid" data-video="videos/reel-06.mp4">
+        <img loading="lazy" decoding="async" src="videos/reel-06-poster.jpg" alt="">
         <button type="button" class="play" aria-label="Play film 06"><span class="tri"></span></button>
         <b>REEL 06</b><u>PLAY ▶</u>
       </div>
-      <div class="vid" data-id="1V2lte_7AZZ4knRdWHFCNArWIUYpao2MN">
-        <img referrerpolicy="no-referrer" loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1V2lte_7AZZ4knRdWHFCNArWIUYpao2MN&amp;sz=w800" alt="">
+      <div class="vid" data-video="videos/reel-07.mp4">
+        <img loading="lazy" decoding="async" src="videos/reel-07-poster.jpg" alt="">
         <button type="button" class="play" aria-label="Play film 07"><span class="tri"></span></button>
         <b>REEL 07</b><u>PLAY ▶</u>
       </div>
@@ -1238,7 +1238,7 @@ secs.forEach(s=>so.observe(s));
 })();
 </script>
 <script>
-/* videos: Drive iframe is created only on click, one at a time */
+/* local video: only load the selected MP4, then stop it on close */
 (function(){
   var vids=document.querySelectorAll('.vid');
   var lightbox=document.querySelector('.video-lightbox');
@@ -1248,8 +1248,13 @@ secs.forEach(s=>so.observe(s));
   var previousOverflow='';
 
   function close(){
-    var frame=player.querySelector('iframe');
-    if(frame)frame.remove();
+    var video=player.querySelector('video');
+    if(video){
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+      video.remove();
+    }
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden','true');
     document.documentElement.classList.remove('video-open');
@@ -1266,15 +1271,33 @@ secs.forEach(s=>so.observe(s));
       var img=v.querySelector('img');
       var ratio=img&&img.naturalWidth&&img.naturalHeight?img.naturalWidth/img.naturalHeight:16/9;
       player.style.setProperty('--video-ratio',ratio);
-      var f=document.createElement('iframe');
-      f.src='https://drive.google.com/file/d/'+v.dataset.id+'/preview';
-      f.allow='autoplay; fullscreen; encrypted-media';
-      f.allowFullscreen=true;f.title='Film '+v.querySelector('b').textContent;
-      player.appendChild(f);
+      player.style.aspectRatio='';
+      var video=document.createElement('video');
+      video.src=v.dataset.video;
+      video.poster=img?img.src:'';
+      video.controls=true;
+      video.autoplay=true;
+      video.playsInline=true;
+      video.preload='metadata';
+      video.setAttribute('aria-label','Film '+v.querySelector('b').textContent);
+      video.addEventListener('loadedmetadata',function(){
+        if(video.videoWidth&&video.videoHeight){
+          var actualRatio=video.videoWidth/video.videoHeight;
+          player.style.setProperty('--video-ratio',actualRatio);
+          player.style.aspectRatio=actualRatio;
+        }
+      },{once:true});
+      video.addEventListener('error',function(){
+        console.error('Unable to load local video: '+video.currentSrc);
+      },{once:true});
+      player.appendChild(video);
       lightbox.classList.add('open');
       lightbox.setAttribute('aria-hidden','false');
       document.documentElement.classList.add('video-open');
       closeButton.focus();
+      video.play().catch(function(error){
+        console.error('Unable to start local video playback:',error);
+      });
     });
   });
   closeButton.addEventListener('click',close);
