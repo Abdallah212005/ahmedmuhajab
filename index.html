@@ -362,13 +362,8 @@ html.go .hero-img .burn{animation:burn 1.8s .05s cubic-bezier(.2,.7,.2,1) both}
 
 /* typewriter headline + pull-down name */
 .hero-title .ch{position:relative;opacity:0}
-.hero-title .ch::after{content:"";position:absolute;right:-.045em;top:.14em;width:.05em;height:.72em;background:var(--accent);opacity:0}
 html.go .hero-title .ch{animation:typeIn 0s var(--d) forwards}
-html.go .hero-title .ch::after{animation:caretOn .085s var(--d) steps(1) forwards}
-html.go .hero-title .ch.last::after{animation:caretEnd 2.2s var(--d) steps(1) forwards}
 @keyframes typeIn{to{opacity:1}}
-@keyframes caretOn{0%{opacity:1}99%{opacity:1}100%{opacity:0}}
-@keyframes caretEnd{0%,24%{opacity:1}25%,49%{opacity:0}50%,74%{opacity:1}75%,100%{opacity:0}}
 .hero-title .pull{display:block;overflow:hidden;padding:.04em .25em .1em 0;margin-top:.02em}
 .hero-title .pull em{margin-top:0;transform:translateY(-115%)}
 html.go .hero-title .pull em{animation:pullDown .95s 2.12s cubic-bezier(.3,.9,.3,1) forwards}
@@ -376,7 +371,7 @@ html.go .hero-title .pull em{animation:pullDown .95s 2.12s cubic-bezier(.3,.9,.3
 html.go .hero-main{animation:none}
 html.go .hero-sub{animation:fadeUp .8s 2.82s ease-out both}
 html:not(.go) .hero-sub{opacity:0}
-@media (prefers-reduced-motion:reduce){.hero-title .ch{opacity:1!important;animation:none!important}.hero-title .ch::after{display:none}.hero-title .pull em{transform:none!important;animation:none!important}html:not(.go) .hero-sub{opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero-title .ch{opacity:1!important;animation:none!important}.hero-title .pull em{transform:none!important;animation:none!important}html:not(.go) .hero-sub{opacity:1}}
 @media (prefers-reduced-motion:reduce){#intro{display:none!important}html.go .hero-img,html.go .hero-img img,html.go .hero-main,html.go .topbar,html.go .meta,html.go .index,html.go .film-strip,html.go .film-edge,html.go .hero-note{animation:none!important}}
 
 /* =========================================================
